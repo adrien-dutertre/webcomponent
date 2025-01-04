@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Web Component</title>
+    <style>
+        input[type="number"][slot]::-webkit-inner-spin-button,
+        input[type="number"][slot]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test de Web Component</h1>
+    <form name="myform" style="display: flex; gap: 24px; flex-direction: column;">
+        <label for="counter1">Participants</label>
+        <input-counter>
+            <input id="counter1" type="number" slot="input" value="0" min="0" max="10"></input>
+            <span slot="suffixe">pers.</span>
+            <span slot="assistance-message">Nbr de personnes</span>
+            <span slot="error-message">Erreur</span>
+        </input-counter>
+        <button type="submit">Ok</button>
+    </form>
+    
+
+    <script src="inputCounter.js"></script>
+    <script loading="lazy">
+        const formulaire = document.forms["myform"];
+        formulaire.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log(formulaire.elements);
+        })
+    </script>
+</body>
+</html>
